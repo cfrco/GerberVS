@@ -138,7 +138,7 @@ namespace GerberVS
         /// <summary>
         /// Gets the macro instruction list.
         /// </summary>
-        internal List<GerberInstruction> InstructionList { get; }
+        public List<GerberInstruction> InstructionList { get; }
 
         /// <summary>
         /// Aperture name.
@@ -685,7 +685,7 @@ namespace GerberVS
             }
 
             // Store a flag to let the renderer know if it should expect any "clear" primatives.
-            aperture.Parameters()[0] = clearOperatorUsed ? 1.0f : 0.0f;
+            //aperture.Parameters()[0] = clearOperatorUsed ? 1.0f : 0.0f;
 
             return success;
         }
@@ -732,10 +732,10 @@ namespace GerberVS
         }
     }
 
-    internal class GerberInstruction
+    public class GerberInstruction
     {
-        internal GerberOpCode Opcode { get; set; }
-        internal Union Data;
+        public GerberOpCode Opcode { get; set; }
+        public Union Data;
 
         public GerberInstruction()
         {
@@ -743,7 +743,7 @@ namespace GerberVS
         }
 
         [StructLayout(LayoutKind.Explicit)]
-        internal struct Union
+        public struct Union
         {
             // Set the offsets to the same position so that both variables occupy
             // the same memory address which is essentially C++ union does.

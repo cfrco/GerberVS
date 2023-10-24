@@ -35,7 +35,7 @@ namespace GerberVS
     /// <summary>
     /// Op codes used when parsing aperture macros.
     /// </summary>
-    internal enum GerberOpCode
+    public enum GerberOpCode
     {
         Nop = 0,            // No operation.
         Push,               // Push the instruction onto the stack.

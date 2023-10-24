@@ -33,7 +33,7 @@ namespace GerberTranslator
                 }
                 double[] parameters = new double[a.ParameterCount];
                 Array.Copy(a.Parameters(), parameters, a.ParameterCount);
-                writeLine($"Ape D{i} {a.ApertureType} {am(a.ApertureMacro)} | {string.Join(", ", parameters.Select(p => p.ToString()))}");
+                writeLine($"Aperture D{i} {a.ApertureType} ({string.Join(", ", parameters.Select(p => p.ToString()))}) | {am(a)}");
             }
 
             foreach (var g in gProject.FileInfo[0].Image.GerberNetList)
@@ -42,13 +42,22 @@ namespace GerberTranslator
             }
         }
 
-        private string am(ApertureMacro apertureMacro)
+        private string am(Aperture aperture)
         {
+            ApertureMacro apertureMacro = aperture.ApertureMacro;
             if (apertureMacro == null)
             {
                 return "";
             }
-            return apertureMacro.Name;
+
+            string msg = apertureMacro.Name;
+            
+            foreach (SimplifiedApertureMacro sam in aperture.SimplifiedMacroList)
+            {
+                msg += "; " + sam.ApertureType;
+                msg += "," + string.Join(",", sam.Parameters.ToArray());
+            }
+            return msg;
         }
 
         private bool openLayer(string fileName)
