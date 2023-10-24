@@ -36,9 +36,11 @@ namespace GerberTranslator
                 writeLine($"Aperture D{i} {a.ApertureType} ({string.Join(", ", parameters.Select(p => p.ToString()))}) | {am(a)}");
             }
 
-            foreach (var g in gProject.FileInfo[0].Image.GerberNetList)
+            foreach (GerberNet g in gProject.FileInfo[0].Image.GerberNetList)
             {
-                //writeLine($"Obj {g.Aperture} X={g.StartX} Y={g.StartY}");
+                // Fash: only startX, startY
+                // On: Consider EndFlag
+                writeLine($"Obj {g.Aperture} {g.ApertureState}{(g.EndFlag?" End":"")} X={g.StartX} Y={g.StartY} X={g.EndX} Y={g.EndY}");
             }
         }
 

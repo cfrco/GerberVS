@@ -368,6 +368,7 @@ namespace GerberVS
                             // Save the coordinate so the next Net can use it for a start point 
                             gerberState.PreviousX = gerberState.CurrentX;
                             gerberState.PreviousY = gerberState.CurrentY;
+                            currentNet.EndFlag = true;
                             break;
                         }
 

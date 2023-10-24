@@ -107,6 +107,8 @@ namespace GerberVS
 
         #endregion
 
+        public bool EndFlag { get; set; } = false;
+
         /// <summary>
         /// Creates a new instance of a gerber net and appends it to the net list.
         /// </summary>
