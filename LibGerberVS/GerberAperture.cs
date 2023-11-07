@@ -163,7 +163,7 @@ namespace GerberVS
         /// </summary>
         /// <param name="reader">line holding the macro data</param>
         /// <returns>the resolved apertur macro</returns>
-        internal static ApertureMacro ParseApertureMacro(GerberLineReader reader)
+        public static ApertureMacro ParseApertureMacro(GerberLineReader reader)
         {
             const int MathOperationStackSize = 2;
 

@@ -41,7 +41,7 @@ namespace GerberVS
     /// <summary>
     /// Manage the reading of the Gerber file.
     /// </summary>
-    internal class GerberLineReader
+    public class GerberLineReader
     {
         private StreamReader streamReader;
         private bool result = false;
